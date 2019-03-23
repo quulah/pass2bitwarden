@@ -2,6 +2,10 @@
 
 A Python script to export data from [pass](https://www.passwordstore.org/) in [Bitwarden](https://bitwarden.com/) CSV format. This started as a quick and dirty script to move my passwords to Bitwarden, but it turned out worthy of being shared.
 
+Inspired by [reinefjord/pass2csv](https://github.com/reinefjord/pass2csv), but rewritten from scratch. There's probably some similarities.
+
+Like pass2csv, this script needs [python-gnupg](https://pypi.org/project/python-gnupg/) and Python 3.
+
 ## Config
 
 Currently, the parsed fields and any resulting formatting with regexp group matches or functions can be done in a `config.py` file.
