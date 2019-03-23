@@ -6,7 +6,7 @@ A Python script to export data from [pass](https://www.passwordstore.org/) in [B
 
 Currently, the parsed fields and any resulting formatting with regexp group matches or functions can be done in a `config.py` file.
 
-By default the script exports data in the (Bitwarden Generic CSV Individual Account)[https://help.bitwarden.com/article/import-data/#generic-csv-format-individual-account] format.
+By default the script exports data in the [Bitwarden Generic CSV Individual Account](https://help.bitwarden.com/article/import-data/#generic-csv-format-individual-account) format.
 
 The GPG encrypted password store data is decrypted and processed. As an example: `login_password` is grabbed from the first line of the data, `login_uri` is matched with `^url ?: ?(.*)$` and the `type` is always `login`. Check out the `defaults.py` file if you have any other requirements and create the `config.py` file.
 
