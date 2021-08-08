@@ -12,6 +12,8 @@ try:
 except ImportError:
     from defaults import CSV_FIELDS, FIELD_DEFAULTS, FIELD_FUNCTIONS, FIELD_PATTERNS
 
+DOMAIN_REGEX_RAW = "^((?!-)[A-Za-z0-9-]" + "{1,63}(?<!-)\\.)" + "+[A-Za-z]{2,6}"
+DOMAIN_REGEX = re.compile(DOMAIN_REGEX_RAW)
 
 def traverse(directory):
     pass_files = []
@@ -48,6 +50,12 @@ def decrypt(files, binary, agent):
 
     return datas
 
+def _guess_uri(row):
+    if not 'login_uri' in row:
+        return ''
+    if re.search(DOMAIN_REGEX, row["name"]):
+        return row["name"]
+    return ''
 
 def parse(base_dir, files):
     parsed = []
@@ -68,6 +76,8 @@ def parse(base_dir, files):
             else:
                 row[field] = ''
 
+        if row['login_uri'] == '':
+            row['login_uri'] = _guess_uri(row)
         parsed.append(row)
 
     return parsed
