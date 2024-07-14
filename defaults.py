@@ -27,4 +27,5 @@ FIELD_FUNCTIONS = {
 FIELD_PATTERNS = {
     'login_uri': '^url ?: ?(.*)$',
     'login_username': '^(?:user|login|username).* ?: ?(.*)$',
+    'login_totp': r'otpauth://totp/[^?]+\?secret=([^&]+)',
 }
